@@ -1,0 +1,32 @@
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input: #通道名称,使用stream默认的通道名称,可以自定义
+          destination: stream-demo-trans #要写入的消息队列的名称
+          #            content-type: text/plain   #发送或接受什么类型的消息
+          group: comsumerGroup2 #该属性确保服务只处理一次
+        input_2:
+          binder: kafka
+          destination: baeldung
+          group: baeldung-group
+
+        packetUplinkOutput:
+          destination: packetUplinkTopic
+#          content-type: application/json
+          binder: kafka
+
+        packetUplinkInput:
+          destination: packetUplinkTopic
+#          content-type: application/json
+          group: packetUplinkTopicGroup
+          binder: kafka
+          consumer:
+            concurrency: 20 # 初始/最少/空闲时 消费者数量。默认1
+
+      kafka: #使用kafka作为服务中的消息总线
+        binder:
+          zkNodes: localhost:2181 #zookeeper的网络位置,如果是集群,逗号分割
+          brokers: localhost:9092 #kafka的网络位置
+          auto-create-topics: true
