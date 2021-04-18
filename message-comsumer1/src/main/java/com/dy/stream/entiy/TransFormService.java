@@ -1,5 +1,7 @@
 package com.dy.stream.entiy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -11,6 +13,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
  */
 @EnableBinding(SendToBinder.class)
 public class TransFormService {
+	private static Logger logger =  LoggerFactory.getLogger( TransFormService.class);
 
 	@StreamListener("input")
 	//SendTo注解:给别人一个反馈ACK

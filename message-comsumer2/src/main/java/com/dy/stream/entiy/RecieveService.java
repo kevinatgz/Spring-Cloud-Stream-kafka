@@ -12,4 +12,6 @@ public class RecieveService {
 	public void recieve(Message payload) {
 		System.out.println(payload.toString());
 	}
+
+
 }

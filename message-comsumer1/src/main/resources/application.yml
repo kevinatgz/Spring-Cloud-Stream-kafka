@@ -8,7 +8,7 @@ spring:
          bindings:
             input: #通道名称,使用stream默认的通道名称,可以自定义, 接受消息生产者生产的消息 
                destination: stream-demo #要写入的消息队列的名称
- #              group: comsumerGroup1 #该属性确保服务只处理一次
+               group: comsumerGroup1 #该属性确保服务只处理一次
             output:
                destination: stream-demo-trans #转发
          kafka: #使用kafka作为服务中的消息总线
